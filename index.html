@@ -35,9 +35,69 @@
         transform: translateY(-35px);
       }
     }
+
+
+/* LOVE & DONUTS ANIMATIONS ♡ */
+
+body {
+  overflow-x: hidden;
+}
+
+/* Floating hearts and donuts */
+.floaty {
+  position: fixed;
+  bottom: -50px;
+  font-size: 28px;
+  pointer-events: none;
+  z-index: 1;
+  animation: floatUp 6s linear infinite;
+}
+
+/* Move upward gently */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(-10deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-110vh) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+/* Sparkling stars */
+.sparkle {
+  position: fixed;
+  font-size: 25px;
+  pointer-events: none;
+  z-index: 1;
+  animation: twinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.2;
+    transform: scale(0.6);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+  
   </style>
 </head>
-
+  
 <body>
   <h1>Love & Peace! ♡</h1>
 
@@ -46,5 +106,51 @@
      alt="Vash and Wolfwood">
 
   <p>Two silly little guys! 🍩</p>
+  
+<!-- Floating hearts ♡ -->
+<div class="floaty"
+     style="left:10%; animation-delay:-1s;">
+  💗
+</div>
+
+<div class="floaty"
+     style="left:40%; animation-delay:-3s;">
+  💕
+</div>
+
+<div class="floaty"
+     style="left:85%; animation-delay:-5s;">
+  💖
+</div>
+
+<!-- Floating donuts 🍩 -->
+<div class="floaty"
+     style="left:25%; animation-delay:-2s;">
+  🍩
+</div>
+
+<div class="floaty"
+     style="left:70%; animation-delay:-4s;">
+  🍩
+</div>
+
+<!-- Twinkling sparkles ✨ -->
+<div class="sparkle"
+     style="top:25%; left:12%;">
+  ✨
+</div>
+
+<div class="sparkle"
+     style="top:40%; right:12%;
+            animation-delay:1s;">
+  ✦
+</div>
+
+<div class="sparkle"
+     style="bottom:20%; left:18%;
+            animation-delay:0.5s;">
+  ✧
+</div>
+
 </body>
 </html>
