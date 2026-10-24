@@ -481,8 +481,30 @@ function closeLoveOS() {
       currentLetter = letters.length - 1;
     }
 
-    document.getElementById("letterText").textContent =
-      letters[currentLetter];
+    typeLetter(letters[currentLetter]);
+  }
+
+  
+  // Magical typewriter for our letters!
+  let typingTimer;
+
+  function typeLetter(message) {
+    clearInterval(typingTimer);
+
+    const letterBox = document.getElementById("letterText");
+    letterBox.textContent = "";
+
+    const characters = Array.from(message);
+    let position = 0;
+
+    typingTimer = setInterval(function() {
+      if (position < characters.length) {
+        letterBox.textContent += characters[position];
+        position++;
+      } else {
+        clearInterval(typingTimer);
+      }
+    }, 45);
   }
 
 </script>
