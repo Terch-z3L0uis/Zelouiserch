@@ -212,6 +212,37 @@ body {
   cursor: pointer;
 }
 
+/* LoveOS Letters app */
+.letters-app {
+  padding: 15px;
+  text-align: center;
+  color: #914b70;
+}
+
+.letters-paper {
+  background: #fff0f6;
+  border: 2px dashed #e9a8c5;
+  border-radius: 12px;
+  padding: 18px;
+  min-height: 90px;
+  line-height: 1.6;
+  margin: 12px 0;
+}
+
+.letters-button {
+  background: #f8c7dc;
+  color: #914b70;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 12px;
+  margin: 4px;
+  cursor: pointer;
+}
+
+.letters-button:hover {
+  background: #f2aecb;
+}
+
   </style>
 </head>
   
@@ -237,6 +268,21 @@ body {
     <h2>Hello, little visitor! ♡</h2>
     <p>Welcome to Vash & Wolfwood's tiny computer!</p>
     <p>🍩 💕 ✨</p>
+
+    
+<!-- Our little Letters app! -->
+<div class="letters-app">
+  <h3>💌 Letters.txt</h3>
+  <p>♡ A little note from Wolfwood ♡</p>
+
+  <div class="letters-paper" id="letterText">
+    Needle-noggin ate all the donuts again... 🍩
+  </div>
+
+  <button class="letters-button" onclick="changeLetter(-1)">← Previous</button>
+  <button class="letters-button" onclick="changeLetter(1)">Next →</button>
+</div>
+
   </div>
 
 </div>
@@ -409,6 +455,35 @@ function closeLoveOS() {
 
   loveosTitle.addEventListener("pointerup", stopDragging);
   loveosTitle.addEventListener("pointercancel", stopDragging);
+
+
+  
+  // Little letters from Vash and Wolfwood!
+  const letters = [
+    "Wolfwood: Needle-noggin ate all the donuts again... 🍩",
+    "Vash: I ONLY ATE THREE!! 🥺",
+    "Wolfwood: There were only three, you idiot.",
+    "Vash: LOVE AND PEACE!! ✌️💕",
+    "Wolfwood: That's not an apology.",
+    "Vash: ...Can I have another donut? 🍩"
+  ];
+
+  let currentLetter = 0;
+
+  function changeLetter(direction) {
+    currentLetter = currentLetter + direction;
+
+    if (currentLetter >= letters.length) {
+      currentLetter = 0;
+    }
+
+    if (currentLetter < 0) {
+      currentLetter = letters.length - 1;
+    }
+
+    document.getElementById("letterText").textContent =
+      letters[currentLetter];
+  }
 
 </script>
 
