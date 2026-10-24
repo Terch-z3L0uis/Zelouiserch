@@ -170,6 +170,7 @@ body {
     
 /* LoveOS — Our tiny pastel computer! */
 .loveos-window {
+  position: relative;
   width: 320px;
   max-width: 90%;
   margin: 30px auto;
@@ -190,6 +191,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+    cursor: grab;
+  user-select: none;
 }
 
 /* Inside the window */
@@ -225,7 +228,7 @@ body {
 <!-- Our tiny LoveOS computer! -->
 <div class="loveos-window" id="loveosWindow">
 
-  <div class="loveos-title">
+ <div class="loveos-title" id="loveosTitle">
     <span>💌 Welcome.txt</span>
     <button class="loveos-close" onclick="closeLoveOS()">×</button>
   </div>
@@ -362,6 +365,50 @@ function closeLoveOS() {
     const windowBox = document.getElementById("loveosWindow");
     windowBox.style.display = "block";
   }
+
+
+  
+  // Make LoveOS draggable!
+  const loveosWindow = document.getElementById("loveosWindow");
+  const loveosTitle = document.getElementById("loveosTitle");
+
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
+  let originalLeft = 0;
+  let originalTop = 0;
+
+  loveosTitle.addEventListener("pointerdown", function(event) {
+    if (event.target.closest("button")) return;
+
+    isDragging = true;
+    startX = event.clientX;
+    startY = event.clientY;
+
+    originalLeft = parseFloat(loveosWindow.style.left) || 0;
+    originalTop = parseFloat(loveosWindow.style.top) || 0;
+
+    loveosTitle.setPointerCapture(event.pointerId);
+    loveosTitle.style.cursor = "grabbing";
+  });
+
+  loveosTitle.addEventListener("pointermove", function(event) {
+    if (!isDragging) return;
+
+    loveosWindow.style.left =
+      originalLeft + event.clientX - startX + "px";
+
+    loveosWindow.style.top =
+      originalTop + event.clientY - startY + "px";
+  });
+
+  function stopDragging() {
+    isDragging = false;
+    loveosTitle.style.cursor = "grab";
+  }
+
+  loveosTitle.addEventListener("pointerup", stopDragging);
+  loveosTitle.addEventListener("pointercancel", stopDragging);
 
 </script>
 
