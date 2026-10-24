@@ -167,6 +167,48 @@ body {
   display: none;
 }
 
+    
+/* LoveOS — Our tiny pastel computer! */
+.loveos-window {
+  width: 320px;
+  max-width: 90%;
+  margin: 30px auto;
+  background: #fffafc;
+  border: 3px solid #e9a8c5;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px #d98fb355;
+  font-family: Arial, sans-serif;
+}
+
+/* Pink title bar */
+.loveos-title {
+  background: #f8c7dc;
+  padding: 12px;
+  color: #914b70;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Inside the window */
+.loveos-content {
+  padding: 25px 15px;
+  text-align: center;
+  color: #a85c80;
+}
+
+/* Our close button */
+.loveos-close {
+  background: #fff0f6;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 10px;
+  color: #914b70;
+  cursor: pointer;
+}
+
   </style>
 </head>
   
@@ -176,6 +218,26 @@ body {
 <div class="donut-cursor" id="donutCursor">🍩</div>
 
   <h1>Love & Peace! ♡</h1>
+
+  
+<button onclick="openLoveOS()">💌 Open LoveOS</button>
+
+<!-- Our tiny LoveOS computer! -->
+<div class="loveos-window" id="loveosWindow">
+
+  <div class="loveos-title">
+    <span>💌 Welcome.txt</span>
+    <button class="loveos-close" onclick="closeLoveOS()">×</button>
+  </div>
+
+  <div class="loveos-content">
+    <h2>Hello, little visitor! ♡</h2>
+    <p>Welcome to Vash & Wolfwood's tiny computer!</p>
+    <p>🍩 💕 ✨</p>
+  </div>
+
+</div>
+
 
   <img src="Vash-Wolfwood-transparent.png"
      class="chibis"
@@ -288,6 +350,19 @@ body {
       setTimeout(() => pop.remove(), 1000);
     });
   }
+  // Close our tiny LoveOS window!
+function closeLoveOS() {
+  const windowBox = document.getElementById("loveosWindow");
+  windowBox.style.display = "none";
+}
+
+
+  // Open our tiny LoveOS window!
+  function openLoveOS() {
+    const windowBox = document.getElementById("loveosWindow");
+    windowBox.style.display = "block";
+  }
+
 </script>
 
   
