@@ -152,11 +152,29 @@ body {
       scale(1.3);
   }
 }
+
     
+/* Tiny donut that follows the mouse! */
+.donut-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  font-size: 28px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: left 0.06s linear, top 0.06s linear;
+  display: none;
+}
+
   </style>
 </head>
   
 <body>
+
+  
+<div class="donut-cursor" id="donutCursor">🍩</div>
+
   <h1>Love & Peace! ♡</h1>
 
   <img src="Vash-Wolfwood-transparent.png"
@@ -215,6 +233,17 @@ body {
 
 
 <script>
+
+  
+  // Our tiny donut follows the mouse!
+  const donutCursor = document.getElementById("donutCursor");
+
+  document.addEventListener("mousemove", function(event) {
+    donutCursor.style.display = "block";
+    donutCursor.style.left = event.clientX + "px";
+    donutCursor.style.top = event.clientY + "px";
+  });
+
   function happyJump() {
     const chibis = document.getElementById("myChibis");
 
