@@ -94,7 +94,65 @@ body {
     transform: scale(1.2);
   }
 }
-  
+
+/* Extra happy jump when clicked! */
+.chibis.happy {
+  animation: happyBounce 0.5s ease-in-out;
+}
+
+@keyframes happyBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-85px) scale(1.1);
+  }
+}
+
+/* Little surprise message */
+.love-message {
+  position: fixed;
+  left: 50%;
+  top: 18%;
+  transform: translateX(-50%);
+  color: #d36b93;
+  font-size: 24px;
+  font-weight: bold;
+  pointer-events: none;
+  z-index: 10;
+  animation: messagePop 1.3s ease-out forwards;
+}
+
+@keyframes messagePop {
+  0% { opacity: 0; }
+  25% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Hearts and donuts that pop out */
+.pop-treat {
+  position: fixed;
+  font-size: 28px;
+  pointer-events: none;
+  z-index: 10;
+  animation: treatPop 1s ease-out forwards;
+}
+
+@keyframes treatPop {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform:
+      translate(calc(-50% + var(--x)),
+                calc(-50% + var(--y)))
+      scale(1.3);
+  }
+}
+    
   </style>
 </head>
   
@@ -103,7 +161,10 @@ body {
 
   <img src="Vash-Wolfwood-transparent.png"
      class="chibis"
-     alt="Vash and Wolfwood">
+     id="myChibis"
+     alt="Vash and Wolfwood"
+     onclick="happyJump()">
+
 
   <p>Two silly little guys! 🍩</p>
   
@@ -152,5 +213,54 @@ body {
   ✧
 </div>
 
+
+<script>
+  function happyJump() {
+    const chibis = document.getElementById("myChibis");
+
+    // Restart the happy jump
+    chibis.classList.remove("happy");
+    void chibis.offsetWidth;
+    chibis.classList.add("happy");
+
+    // Show a cute message
+    const message = document.createElement("div");
+    message.className = "love-message";
+    message.textContent = "LOVE & PEACE!! ♡";
+    document.body.appendChild(message);
+
+    setTimeout(() => message.remove(), 1300);
+
+    // Find the center of the chibis
+    const rect = chibis.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    // Pop out hearts and donuts!
+    const treats = ["🍩", "💕", "💗", "✨", "🍩"];
+
+    treats.forEach((treat, i) => {
+      const pop = document.createElement("span");
+
+      pop.className = "pop-treat";
+      pop.textContent = treat;
+      pop.style.left = centerX + "px";
+      pop.style.top = centerY + "px";
+
+      const angle = (i / treats.length) * Math.PI * 2;
+      pop.style.setProperty(
+        "--x", Math.cos(angle) * 110 + "px"
+      );
+      pop.style.setProperty(
+        "--y", Math.sin(angle) * 110 + "px"
+      );
+
+      document.body.appendChild(pop);
+      setTimeout(() => pop.remove(), 1000);
+    });
+  }
+</script>
+
+  
 </body>
 </html>
