@@ -640,14 +640,14 @@ function playNote(frequency) {
   oscillator.connect(volume);
   volume.connect(audioContext.destination);
 
-  volume.gain.setValueAtTime(0.08, audioContext.currentTime);
+ volume.gain.setValueAtTime(0.04, audioContext.currentTime);
   volume.gain.exponentialRampToValueAtTime(
     0.001,
-    audioContext.currentTime + 0.4
+    audioContext.currentTime + 0.8
   );
 
   oscillator.start();
-  oscillator.stop(audioContext.currentTime + 0.4);
+ oscillator.stop(audioContext.currentTime + 0.8);
 }
   
 </script>
