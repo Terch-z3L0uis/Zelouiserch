@@ -609,11 +609,41 @@ function closeLoveOS() {
     if (musicPlaying) {
       donut.classList.add("spinning");
       button.textContent = "⏸ Pause";
+      playNote(523.25);
     } else {
       donut.classList.remove("spinning");
       button.textContent = "▶ Play";
     }
+    
   }
+
+// Our tiny musical instrument! 🎹
+let audioContext;
+
+function playNote(frequency) {
+  if (!audioContext) {
+    audioContext = new AudioContext();
+  }
+
+  const oscillator = audioContext.createOscillator();
+  const volume = audioContext.createGain();
+
+  oscillator.type = "sine";
+  oscillator.frequency.value = frequency;
+
+  oscillator.connect(volume);
+  volume.connect(audioContext.destination);
+
+  volume.gain.setValueAtTime(0.08, audioContext.currentTime);
+  volume.gain.exponentialRampToValueAtTime(
+    0.001,
+    audioContext.currentTime + 0.4
+  );
+
+  oscillator.start();
+  oscillator.stop(audioContext.currentTime + 0.4);
+}
+  
 </script>
 
 </body>
