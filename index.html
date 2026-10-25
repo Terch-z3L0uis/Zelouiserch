@@ -276,7 +276,8 @@ body {
   <p>♡ A little note from Wolfwood ♡</p>
 
   
-<img src="wolfwood-smirking.png" id="letterPortrait" alt="Wolfwood" width="100">
+
+<img src="wolfwood-playful.png" id="letterPortrait" alt="Wolfwood" width="100">
 <p id="letterSpeaker">Wolfwood 🖤</p>
 
   <div class="letters-paper" id="letterText">
@@ -487,20 +488,30 @@ function closeLoveOS() {
 
     typeLetter(letters[currentLetter]);
     
-    // Change the portrait and speaker!
-    const message = letters[currentLetter];
+    
+    // Give each letter its own manga expression!
+    const portraits = [
+      "wolfwood-playful.png",
+      "vash-wolfwood-duo.png",
+      "wolfwood-action.png",
+      "vash-determined.png",
+      "wolfwood-smirking.png",
+      "vash-happy.png"
+    ];
+
     const portrait = document.getElementById("letterPortrait");
     const speaker = document.getElementById("letterSpeaker");
 
-    if (message.startsWith("Vash:")) {
-      speaker.textContent = "Vash 🍩";
-      portrait.src = "vash-happy.png";
-      portrait.alt = "Vash";
-    } else if (message.startsWith("Wolfwood:")) {
+    portrait.src = portraits[currentLetter];
+
+    if (currentLetter % 2 === 0) {
       speaker.textContent = "Wolfwood 🖤";
-      portrait.src = "wolfwood-smirking.png";
       portrait.alt = "Wolfwood";
+    } else {
+      speaker.textContent = "Vash 🍩";
+      portrait.alt = "Vash";
     }
+
 
   }
 
