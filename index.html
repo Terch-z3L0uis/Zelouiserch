@@ -243,6 +243,49 @@ body {
   background: #f2aecb;
 }
 
+    
+/* Our pastel Music.exe player */
+.music-app {
+  width: 300px;
+  max-width: 90%;
+  margin: 25px auto;
+  padding: 20px;
+  background: #fffafd;
+  border: 3px solid #e9a8c5;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px #d98fb355;
+  text-align: center;
+  color: #914b70;
+}
+
+.music-donut {
+  font-size: 65px;
+  margin: 15px auto;
+}
+
+.music-donut.spinning {
+  animation: donutSpin 3s linear infinite;
+}
+
+@keyframes donutSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+#musicButton {
+  background: #f8c7dc;
+  color: #914b70;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#musicButton:hover {
+  background: #f2aecb;
+}
+
   </style>
 </head>
   
@@ -292,6 +335,18 @@ body {
 
 </div>
 
+
+<!-- Our tiny Music.exe player! -->
+<div class="music-app">
+  <h3>🎵 Music.exe</h3>
+  <p>Now playing: Love & Peace ♡</p>
+
+  <div class="music-donut">🍩</div>
+
+  <button id="musicButton" onclick="toggleMusic()">
+    ▶ Play
+  </button>
+</div>
 
   <img src="Vash-Wolfwood-transparent.png"
      class="chibis"
@@ -540,6 +595,26 @@ function closeLoveOS() {
 
 </script>
 
-  
+
+<script>
+  // Our tiny Music.exe Play/Pause button!
+  let musicPlaying = false;
+
+  function toggleMusic() {
+    const donut = document.querySelector(".music-donut");
+    const button = document.getElementById("musicButton");
+
+    musicPlaying = !musicPlaying;
+
+    if (musicPlaying) {
+      donut.classList.add("spinning");
+      button.textContent = "⏸ Pause";
+    } else {
+      donut.classList.remove("spinning");
+      button.textContent = "▶ Play";
+    }
+  }
+</script>
+
 </body>
 </html>
