@@ -275,6 +275,10 @@ body {
   <h3>💌 Letters.txt</h3>
   <p>♡ A little note from Wolfwood ♡</p>
 
+  
+<img src="wolfwood-smirking.png" id="letterPortrait" alt="Wolfwood" width="100">
+<p id="letterSpeaker">Wolfwood 🖤</p>
+
   <div class="letters-paper" id="letterText">
     Needle-noggin ate all the donuts again... 🍩
   </div>
@@ -482,6 +486,22 @@ function closeLoveOS() {
     }
 
     typeLetter(letters[currentLetter]);
+    
+    // Change the portrait and speaker!
+    const message = letters[currentLetter];
+    const portrait = document.getElementById("letterPortrait");
+    const speaker = document.getElementById("letterSpeaker");
+
+    if (message.startsWith("Vash:")) {
+      speaker.textContent = "Vash 🍩";
+      portrait.src = "vash-happy.png";
+      portrait.alt = "Vash";
+    } else if (message.startsWith("Wolfwood:")) {
+      speaker.textContent = "Wolfwood 🖤";
+      portrait.src = "wolfwood-smirking.png";
+      portrait.alt = "Wolfwood";
+    }
+
   }
 
   
