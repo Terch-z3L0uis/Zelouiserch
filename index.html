@@ -314,6 +314,7 @@ body {
 .music-stars span {
   display: inline-block;
   animation: starTwinkle 2s ease-in-out infinite;
+  animation-play-state: paused;
 }
 
 .music-stars span:nth-child(2) {
@@ -656,6 +657,7 @@ function closeLoveOS() {
   function toggleMusic() {
     const donut = document.querySelector(".music-donut");
     const button = document.getElementById("musicButton");
+    const stars = document.querySelectorAll(".music-stars span");
 
     musicPlaying = !musicPlaying;
 
@@ -663,10 +665,12 @@ function closeLoveOS() {
       donut.classList.add("spinning");
       button.textContent = "⏸ Pause";
      playMelody();
+      stars.forEach(star => star.style.animationPlayState = "running");
     } else {
       donut.classList.remove("spinning");
       button.textContent = "▶ Play";
       clearTimeout(melodyTimer);
+      stars.forEach(star => star.style.animationPlayState = "paused");
     }
     
   }
