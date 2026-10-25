@@ -610,6 +610,12 @@ function closeLoveOS() {
       donut.classList.add("spinning");
       button.textContent = "⏸ Pause";
       playNote(523.25);
+
+setTimeout(() => playNote(659.25), 450);
+
+setTimeout(() => playNote(783.99), 900);
+
+setTimeout(() => playNote(1046.50), 1350);
     } else {
       donut.classList.remove("spinning");
       button.textContent = "▶ Play";
