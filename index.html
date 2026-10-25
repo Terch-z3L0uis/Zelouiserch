@@ -285,7 +285,52 @@ body {
 #musicButton:hover {
   background: #f2aecb;
 }
+/* Tiny golden stars for Music.exe ⭐ */
+.music-stars {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 12px;
+}
 
+.music-stars span {
+  color: #e6b84e;
+  font-size: 20px;
+  text-shadow: 0 0 8px #ffe9a0;
+}
+    /* Make our golden stars twinkle! ✨ */
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.music-stars span {
+  display: inline-block;
+  animation: starTwinkle 2s ease-in-out infinite;
+}
+
+.music-stars span:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.music-stars span:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+.music-stars span:nth-child(4) {
+  animation-delay: 1.2s;
+}
+
+.music-stars span:nth-child(5) {
+  animation-delay: 1.6s;
+}
   </style>
 </head>
   
@@ -338,6 +383,13 @@ body {
 
 <!-- Our tiny Music.exe player! -->
 <div class="music-app">
+  <div class="music-stars" aria-hidden="true">
+  <span>✦</span>
+  <span>✧</span>
+  <span>✦</span>
+  <span>✧</span>
+  <span>✦</span>
+</div>
   <h3>🎵 Music.exe</h3>
   <p>Now playing: Love & Peace ♡</p>
 
