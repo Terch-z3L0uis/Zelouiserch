@@ -511,6 +511,33 @@ body {
   </p>
 </div>
 
+<!-- 🌷 CHAPTER 04 -->
+<div id="gardenChapter4" style="display: none;">
+  <h4>🌷 04 // A Flower for Tomorrow</h4>
+
+  <p>
+    The future of our planet is not decided by one
+    flower, one person, or one perfect action.
+    It depends on choices made together: protecting
+    forests, reducing greenhouse gas emissions,
+    conserving resources, and supporting healthier
+    communities and ecosystems. Scientists warn
+    that every additional degree of warming increases
+    risks, but they also show that meaningful action
+    can reduce future harm. Hope is not pretending
+    that everything will be fine. Hope is understanding
+    what is at stake and choosing to care anyway.
+  </p>
+
+  <p>
+    <em>
+      "Even in an uncertain world, there are still
+      flowers worth growing, people worth protecting,
+      and tomorrows worth believing in."
+    </em>
+  </p>
+</div>
+
 </div>
 
   
@@ -885,7 +912,11 @@ document.getElementById("gardenChapter2").style.display = "block";
     
 document.getElementById("gardenChapter3").style.display = "block";
 
-  }
+else if (gardenWaterCount === 3) {
+  plant.textContent = "🌸";
+  document.getElementById("gardenChapter4").style.display = "block";
+}
+
 }
 
 </script>
