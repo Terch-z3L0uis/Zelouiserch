@@ -397,11 +397,13 @@ body {
 <div class="pocket-garden">
   <h3>🌷 Pocket Garden.exe</h3>
   <p>A little flower for tomorrow ♡</p>
-  <p>🌱</p>
-  <p>Every little life deserves a chance to grow.</p>
-</div>
+<p id="gardenPlant">🌱</p>
 
-  </div>
+  <p>Every little life deserves a chance to grow.</p>
+  
+<button id="waterGardenButton" onclick="waterGarden()">
+  💧 Water our little sprout ♡
+</button>
 
 </div>
 
@@ -746,7 +748,24 @@ function playMelody() {
 
   melodyTimer = setTimeout(playMelody, 2400);
 }
+
   
+/* 🌷 POCKET GARDEN.EXE */
+
+let gardenWaterCount = 0;
+
+function waterGarden() {
+  gardenWaterCount++;
+
+  const plant = document.getElementById("gardenPlant");
+
+  if (gardenWaterCount === 1) {
+    plant.textContent = "🌿";
+  } else if (gardenWaterCount === 2) {
+    plant.textContent = "🌷";
+  }
+}
+
 </script>
 
 </body>
