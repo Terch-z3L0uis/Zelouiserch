@@ -460,6 +460,32 @@ body {
       But we can choose how we care for that world."
     </em>
   </p>
+  
+<!-- 🌱 CHAPTER 02 -->
+<div id="gardenChapter2" style="display: none;">
+  <h4>🌱 02 // The Fragile Beginning</h4>
+
+  <p>
+    A seed may look insignificant, but it carries the
+    possibility of an entire life. Real plants need
+    suitable temperatures, water, sunlight, and healthy
+    soil to survive. Climate change can disturb those
+    conditions, making it harder for some species to
+    grow in places where they once flourished. Drought
+    can leave the soil dry, extreme heat can damage
+    crops, and shifting seasons can affect flowering
+    and pollination. Even so, life continues to find
+    ways to grow wherever conditions allow it.
+  </p>
+
+  <p>
+    <em>
+      "Small beginnings are still beginnings.
+      Never underestimate what a little care can become."
+    </em>
+  </p>
+</div>
+
 </div>
 
   
@@ -826,6 +852,9 @@ function waterGarden() {
 
   if (gardenWaterCount === 1) {
     plant.textContent = "🌿";
+    
+document.getElementById("gardenChapter2").style.display = "block";
+
   } else if (gardenWaterCount === 2) {
     plant.textContent = "🌷";
   }
